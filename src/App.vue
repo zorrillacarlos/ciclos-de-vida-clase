@@ -1,12 +1,30 @@
 <template>
-  <div id="app">
+  <div id="app" :class="bgEmit">
     <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/props-emit">Props Emit</router-link> |
+      <router-link to="/bind">Bind</router-link>
     </nav>
-    <router-view/>
+    <router-view @recibirFondo="verFondo($event)" />
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      bgEmit: "",
+    };
+  },
+
+  methods: {
+    verFondo(evento) {
+      this.bgEmit = evento;
+      console.log(evento);
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
